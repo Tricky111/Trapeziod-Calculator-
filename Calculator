@@ -1,0 +1,58 @@
+
+local image = display.newImageRect("download.jpg", 2000, 1000)
+image.x = 300
+image.y = 100
+------------------------------------------------------------------------------------------------------------------
+local abaseTextField = native.newTextField( display.contentCenterX, display.contentCenterY + 40, 300, 50 )
+abaseTextField.id = "abase textField"
+------------------------------------------------------------------------------
+local bbaseTextField = native.newTextField( display.contentCenterX, display.contentCenterY + 120, 300, 50 )
+bbaseTextField.id = "bbase textField"
+---------------------------------------------------------------------------------
+local heightTextField = native.newTextField( display.contentCenterX, display.contentCenterY + 200, 300, 50 )
+heightTextField.id = "height textField"
+---------------------------------------------------------------------------------
+local areaTextField = display.newText( "Area=", display.contentCenterX, display.contentCenterY - 200, native.systemFont, 40 )
+areaTextField.id = "area textField"
+areaTextField:setFillColor( 1, 1, 1 )
+---------------------------------------------------------------------------------
+local aTextField = display.newText( "Text Box 3= Height", display.contentCenterX, display.contentCenterY + 245, native.systemFont, 20 )
+aTextField.id = "a textField"
+aTextField:setFillColor( 1, 1, 1 )
+---------------------------------------------------------------------------------
+local bTextField = display.newText( "Text Box 2= Base", display.contentCenterX, display.contentCenterY + 155, native.systemFont, 20 )
+bTextField.id = "b textField"
+bTextField:setFillColor( 1, 1, 1 )
+---------------------------------------------------------------------------------
+local dTextField = display.newText( "Text Box 1= Base", display.contentCenterX, display.contentCenterY + 75, native.systemFont, 20 )
+dTextField.id = "d textField"
+dTextField:setFillColor( 1, 1, 1 )
+---------------------------------------------------------------------------------
+local pTextField = display.newText( "Area Of a Trapezoid= (Base+Base)/2*Height", display.contentCenterX, display.contentCenterY - 30, native.systemFont, 16 )
+pTextField.id = "p textField"
+pTextField:setFillColor( 1, 1, 1 )
+---------------------------------------------------------------------------------
+local calculateButton = display.newImageRect( "button.png", 100, 100 )
+calculateButton.x = display.contentCenterX
+calculateButton.y = display.contentCenterY -100
+calculateButton.id = "calculate button"
+ ------------------------------------------------------------------------------------------
+local function calculateButtonTouch( event )
+    -- this function calculates the area of a square given the length of one of its sides
+ 
+    local abase 
+    local bbase
+    local height
+    local area
+ 
+    abase = abaseTextField.text
+    bbase = bbaseTextField.text
+    height = heightTextField.text
+    area = ( abase + bbase ) / 2 * height
+    -- print( areaOfSquare )
+    areaTextField.text = "Area= " .. area
+
+    return true
+end
+
+calculateButton:addEventListener( "touch", calculateButtonTouch )
